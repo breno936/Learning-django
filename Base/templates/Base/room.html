@@ -1,0 +1,9 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<a href="{%url 'room_form'%}">Create</a>
+<h1>ROOM</h1>
+{{room.host.username}}
+{{room.name}}
+{{room.topic.id}}
+{%endblock content%}

@@ -1,0 +1,20 @@
+{%extends 'main.html'%}
+
+{%block content%}
+<h1>Home</h1>
+<div>
+    BROWSE TOPICS
+    <p><a href="{%url 'home'%}">All</a></p>
+    {%for i in topics%}
+        <p><a href="{%url 'home'%}?q={{topic.name}}">{{i.name}}</a></p>
+    {%endfor%}
+</div>
+<h3>{{rooms_count}} Quartos disponíveis</h3>
+{%for item in rooms%}
+{%if request.user == room.host%}
+<a href="{%url 'delete_room' item.id%}">EXCLUIR</a>
+<a href="{%url 'room_form' item.id%}">EDITAR</a>
+{%endif%}
+<p><a href="{%url 'room' item.id%}">{{item.name}}</a></p>
+{%endfor%}
+{%endblock content%}
